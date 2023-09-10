@@ -1,18 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Card from '../UI/Card';
 
-const UserForm = () => {
+const UserForm = (props) => {
+  const [formData, setFormData] = useState({
+    username: '',
+    age: '',
+  });
+
+  const inputChangeHandler = (event) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      id: (Math.random() * 1000).toString(),
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    console.log(formData);
+    props.onAddUser(formData);
+    resetHandler();
+  };
+
+  const resetHandler = () => {
+    setFormData({
+      username: '',
+      age: '',
+    });
+  };
+
   return (
     <Card>
-      <form>
+      <form onSubmit={submitHandler}>
         <div className="input-group">
-          <label>Username</label>
-          <input type="text" />
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            value={formData.username}
+            onChange={inputChangeHandler}
+            name="username"
+          />
         </div>
         <div className="input-group">
-          <label>Age (Years)</label>
-          <input type="number" />
+          <label htmlFor="age">Age (Years)</label>
+          <input
+            type="number"
+            value={formData.age}
+            onChange={inputChangeHandler}
+            name="age"
+          />
         </div>
         <div className="form-button">
           <button type="submit" className="button">

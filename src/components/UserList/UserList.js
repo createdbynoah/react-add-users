@@ -7,10 +7,13 @@ const UserList = (props) => {
     <Card>
       <h2 className="user-title">Users</h2>
       <ul className="user-list">
-        <li>Max (28 years old)</li>
-        <li>Max (28 years old)</li>
+        {props.items.map((user) => (
+          <li key={user.id} className="user-item">
+            {user.username} ({user.age} years old)
+          </li>
+        ))}
       </ul>
-      <p className="message-none">No users added.</p>
+      {!props.items.length && <p className="message-none">No users added.</p>}
     </Card>
   );
 };
