@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
+import classes from './UserForm.module.css';
 import Card from '../UI/Card';
+import Button from '../UI/Button';
 
 const UserForm = (props) => {
   const [formData, setFormData] = useState({
@@ -55,7 +57,7 @@ const UserForm = (props) => {
   return (
     <Card>
       <form onSubmit={submitHandler}>
-        <div className="input-group">
+        <div className={classes['input-group']}>
           <label htmlFor="username">Name</label>
           <input
             type="text"
@@ -64,7 +66,7 @@ const UserForm = (props) => {
             name="username"
           />
         </div>
-        <div className="input-group">
+        <div className={classes['input-group']}>
           <label htmlFor="age">Age (Years)</label>
           <input
             type="number"
@@ -73,10 +75,8 @@ const UserForm = (props) => {
             name="age"
           />
         </div>
-        <div className="form-button">
-          <button type="submit" className="button">
-            Add
-          </button>
+        <div className={classes['form-button']}>
+          <Button type="submit">Add</Button>
         </div>
       </form>
     </Card>

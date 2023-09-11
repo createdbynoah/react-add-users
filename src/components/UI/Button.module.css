@@ -1,0 +1,23 @@
+.button {
+  background-color: #6e197b;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #50105d;
+}
+
+.button.danger {
+  background-color: #b63127;
+}
+
+.button.danger:hover {
+  background-color: #8f1f1a;
+}

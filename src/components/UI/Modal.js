@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Card from './Card';
+import Button from './Button';
 
 const Modal = (props) => {
   const dismissHandler = () => {
@@ -8,12 +9,12 @@ const Modal = (props) => {
   };
   return (
     <div className="overlay" onClick={dismissHandler}>
-      <Card title="Error" classes={'modal danger'}>
+      <Card title="Error" className={'modal danger'}>
         <p>{props.message}</p>
         <div className="modal-button">
-          <button className="button danger" onClick={dismissHandler}>
+          <Button onBtnClick={dismissHandler} className="danger" type="button">
             {props.buttonText ? props.buttonText : 'Dismiss'}
-          </button>
+          </Button>
         </div>
       </Card>
     </div>
