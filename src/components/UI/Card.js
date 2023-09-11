@@ -4,7 +4,9 @@ const Card = (props) => {
   return (
     <div className="card">
       {props.title && (
-        <div className={`card__header ${props.className}`}>{props.title}</div>
+        <header className={`card__header ${props.className}`}>
+          {props.title}
+        </header>
       )}
       <div className="card__content">{props.children}</div>
     </div>

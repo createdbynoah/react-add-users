@@ -9,7 +9,7 @@ const Modal = (props) => {
   };
   return (
     <div className="overlay" onClick={dismissHandler}>
-      <Card title="Error" className={'modal danger'}>
+      <Card title={props.title} className="danger">
         <p>{props.message}</p>
         <div className="modal-button">
           <Button onBtnClick={dismissHandler} className="danger" type="button">

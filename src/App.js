@@ -38,8 +38,9 @@ const App = () => {
       {modal && (
         <Modal
           onClose={closeModalHandler}
+          title="Error"
           message={validationMessage}
-          buttonText={'Close'}
+          buttonText="Close"
         />
       )}
       <h1>List Your Family Members</h1>
