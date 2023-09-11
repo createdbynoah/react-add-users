@@ -24,19 +24,43 @@ h1 {
   border: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   margin: 2rem auto;
-  max-width: 400px;
+  max-width: 60%;
   overflow: hidden;
   width: 90%;
 }
 
+@media screen and (max-width: 1800px) {
+  .card {
+    max-width: 40%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .card {
+    max-width: 60%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    max-width: 80%;
+  }
+}
+
 .card__header {
-  background-color: #6e197b;
   color: #fff;
   padding: 0.5em 1em;
-  border: 1px solid #6e197b;
   font-size: 1.3em;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.card.modal {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.card__header.danger {
+  background-color: #b63127;
 }
 
 .card__content {
@@ -70,7 +94,7 @@ h1 {
 
 .input-group input:focus {
   outline: none;
-  border-color: #333;
+  border: 2px solid #6e197b;
 }
 
 .button {
@@ -83,6 +107,10 @@ h1 {
   letter-spacing: 0.05em;
   padding: 0.5rem 1rem;
   cursor: pointer;
+}
+
+.button.danger {
+  background-color: #b63127;
 }
 
 .button__alt {
@@ -104,6 +132,10 @@ h1 {
 
 .button:hover {
   background-color: #50105d;
+}
+
+.button.danger:hover {
+  background-color: #8f1f1a;
 }
 
 .user-title {

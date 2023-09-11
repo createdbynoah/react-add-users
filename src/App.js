@@ -6,6 +6,10 @@ import Modal from './components/UI/Modal';
 
 const App = () => {
   const [users, setUsers] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [validationMessage, setValidationMessage] = useState(
+    'Something went wrong! Please check your inputs and try again.'
+  );
 
   const addUserHandler = (user) => {
     console.log(user);
@@ -14,12 +18,38 @@ const App = () => {
     });
   };
 
+  const removeUserHandler = (id) => {
+    setUsers((prevState) => {
+      return prevState.filter((user) => user.id !== id);
+    });
+  };
+
+  const openModalHandler = (message) => {
+    setValidationMessage(message);
+    setModal(true);
+  };
+
+  const closeModalHandler = () => {
+    setModal(false);
+  };
+
   return (
     <div>
-      {/* <Modal /> */}
-      <h1>Add A User</h1>
-      <UserForm onAddUser={addUserHandler} />
-      <UserList items={users} />
+      {modal && (
+        <Modal
+          onClose={closeModalHandler}
+          message={validationMessage}
+          buttonText={'Close'}
+        />
+      )}
+      <h1>List Your Family Members</h1>
+      <UserForm onAddUser={addUserHandler} onInvalid={openModalHandler} />
+      <UserList
+        items={users}
+        onRemoveUser={removeUserHandler}
+        title={'My Family Members'}
+        noData={'No family members added yet.'}
+      />
     </div>
   );
 };

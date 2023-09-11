@@ -3,7 +3,9 @@ import React from 'react';
 const Card = (props) => {
   return (
     <div className="card">
-      {props.title && <div className="card__header">{props.title}</div>}
+      {props.title && (
+        <div className={`card__header ${props.classes}`}>{props.title}</div>
+      )}
       <div className="card__content">{props.children}</div>
     </div>
   );

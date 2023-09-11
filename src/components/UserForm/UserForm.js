@@ -7,6 +7,7 @@ const UserForm = (props) => {
     username: '',
     age: '',
   });
+  const [formIsValid, setFormIsValid] = useState(false);
 
   const inputChangeHandler = (event) => {
     setFormData((prevState) => ({
@@ -18,9 +19,30 @@ const UserForm = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(formData);
-    props.onAddUser(formData);
-    resetHandler();
+    if (validateUsername() && validateAge()) {
+      setFormIsValid(true);
+      props.onAddUser(formData);
+      resetHandler();
+    }
+  };
+
+  const validateUsername = () => {
+    if (formData.username.trim().length === 0) {
+      props.onInvalid('Please enter a valid name.');
+      return false;
+    }
+    return true;
+  };
+
+  const validateAge = () => {
+    if (formData.age.trim().length === 0) {
+      props.onInvalid('Please enter a valid age.');
+      return false;
+    } else if (+formData.age < 1) {
+      props.onInvalid('Please enter a valid age (> 0).');
+      return false;
+    }
+    return true;
   };
 
   const resetHandler = () => {
@@ -34,7 +56,7 @@ const UserForm = (props) => {
     <Card>
       <form onSubmit={submitHandler}>
         <div className="input-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Name</label>
           <input
             type="text"
             value={formData.username}
@@ -53,7 +75,7 @@ const UserForm = (props) => {
         </div>
         <div className="form-button">
           <button type="submit" className="button">
-            Add User
+            Add
           </button>
         </div>
       </form>
